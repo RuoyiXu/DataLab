@@ -554,15 +554,14 @@ int bitCount(int x) {
  */
 int bitReverse(int x)
 {
-  int m4 = 0x0f | (0x0f << 8);
-  int m2;
-  int m1;
-  m4 = m4 | (m4 << 16);
-  m2 = m4 ^ (m4 << 2);
-  m1 = m2 ^ (m2 << 1);
-  x = ((x >> 1) & m1) | ((x & m1) << 1);
-  x = ((x >> 2) & m2) | ((x & m2) << 2);
-  x = ((x >> 4) & m4) | ((x & m4) << 4);
-  return (x << 24) | ((x << 8) & (0xff << 16)) |
-         ((x >> 8) & (0xff << 8)) | ((x >> 24) & 0xff);
+  int mask = (0xff << 8) | 0xff;
+  x = ((x >> 16) & mask) | (x << 16);
+  mask = mask ^ (mask << 8);
+  x = ((x >> 8) & mask) | ((x & mask) << 8);
+  mask = mask ^ (mask << 4);
+  x = ((x >> 4) & mask) | ((x & mask) << 4);
+  mask = mask ^ (mask << 2);
+  x = ((x >> 2) & mask) | ((x & mask) << 2);
+  mask = mask ^ (mask << 1);
+  return ((x >> 1) & mask) | ((x & mask) << 1);
 }
