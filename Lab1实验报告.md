@@ -1,7 +1,5 @@
 # Lab1：Data Lab 实验报告
 
-- 姓名：许若意
-- 学号：24340246005
 - 仓库：[https://github.com/RuoyiXu/DataLab](https://github.com/RuoyiXu/DataLab)
 - 最终提交：`b5a22a2`
 
@@ -20,8 +18,6 @@
 ### 1. 运算符与操作数检查
 
 ![运算符检查结果](images/check_ops.png)
-
-### 2. 正确性测试
 
 ![btest 正确性测试结果](images/btest.png)
 
